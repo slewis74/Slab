@@ -6,6 +6,11 @@
         <authors>Shannon Lewis</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Slab framework for Windows 8.1 and Windows Phone 8</description>
+        <dependencies>
+          <group>
+            <dependency id="PresentationBus" version="1.0.0" />
+          </group>
+        </dependencies>
     </metadata>
     <files>
         <file src="Slab.WinStore\SlabResources\Controls.xaml" target="content\win8\SlabResources\Controls.xaml" />

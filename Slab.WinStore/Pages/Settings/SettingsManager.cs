@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Slab.Data;
 using Slab.Pages;
 using Slab.Pages.Navigation;
-using Slab.PresentationBus;
 using Slab.WinStore.Requests;
+using Slew.PresentationBus;
 using Windows.UI.ApplicationSettings;
 
 namespace Slab.WinStore.Pages.Settings
@@ -90,7 +90,7 @@ namespace Slab.WinStore.Pages.Settings
         public void Handle(DisplaySettingsRequest request)
         {
             request.IsHandled = true;
-            var settings = GetViewSettings(request.Args);
+            var settings = GetViewSettings(request.ViewType);
 
             foreach (var setting in settings)
             {
