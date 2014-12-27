@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Serilog;
 using Slab.Requests;
 using Slew.PresentationBus;
 
@@ -45,6 +46,8 @@ namespace Slab.Pages.Navigation
         {
             var route = controllerResult.Route;
             var result = controllerResult.Result;
+
+            Log.Information("Doing navigate to route {route}", route);
 
             var pageResult = result as IPageActionResult;
             if (pageResult != null)

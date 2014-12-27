@@ -15,6 +15,7 @@ using Slew.PresentationBus;
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Serilog;
 
 namespace Slab.WinStore.Controls
 {
@@ -136,6 +137,7 @@ namespace Slab.WinStore.Controls
 
         private static void TryToRestoreNavigationStack(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            Log.Information("Trying to restore the navigation stack");
             if (e.NewValue == null) return;
 
             var frame = (NavigationFrame)d;
@@ -144,6 +146,7 @@ namespace Slab.WinStore.Controls
 
         public async void RestoreNavigationStack()
         {
+            Log.Information("Restoring the navigation stack");
             if (NavigationStackStorage == null ||
                 ControllerInvoker == null ||
                 PageCommandsPanel == null)
@@ -155,6 +158,7 @@ namespace Slab.WinStore.Controls
 
             foreach (var route in routes)
             {
+                Log.Information("Restoring route {route}", route);
                 _navigationStack.Push(new NavigationFrameStackItem(route, null));
             }
             

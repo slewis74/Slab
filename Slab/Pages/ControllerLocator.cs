@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Serilog;
 
 namespace Slab.Pages
 {
@@ -28,7 +29,10 @@ namespace Slab.Pages
                 throw new InvalidOperationException(string.Format("Ambiguous controller name {0}", controllerPrefix));
             }
 
-            var instance = _controllerFactory.Create(controllerTypes.Single());
+            var controllerType = controllerTypes.Single();
+            Log.Information("Creating controller {controllerType}", controllerType);
+
+            var instance = _controllerFactory.Create(controllerType);
             return instance;
         }
     }

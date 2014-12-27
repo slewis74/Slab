@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
+using Serilog;
 using Slab.Pages.Navigation;
 
 namespace Slab.Pages
@@ -30,6 +31,8 @@ namespace Slab.Pages
             var parameterValues = new List<object>();
             var route = BuildMethodCall<TController>(action, body, parameterValues);
 
+            Log.Information("Invoking controller for route {route}", route);
+
             var result = (ActionResult)body.Method.Invoke(instance, parameterValues.ToArray());
             
             return new ControllerInvokerResult
@@ -47,6 +50,8 @@ namespace Slab.Pages
             var body = (MethodCallExpression)action.Body;
             var parameterValues = new List<object>();
             var route = BuildMethodCall<TController>(action, body, parameterValues);
+
+            Log.Information("Invoking controller for route {route}", route);
 
             var result = await (Task<ActionResult>)body.Method.Invoke(instance, parameterValues.ToArray());
 
