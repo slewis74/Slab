@@ -72,7 +72,9 @@
 			      Grid.Row="1" Grid.Column="0"
             PageCommandsPanel="{Binding ElementName=PageCommands}"
             ViewLocator="{Binding ViewLocator}"
-            NavigationStackStorage="{Binding NavigationStackStorage}" />
+            NavigationStackStorage="{Binding NavigationStackStorage}" 
+            ControllerInvoker="{Binding ControllerInvoker}"
+            PresentationBus="{Binding PresentationBus}"/>
     </Grid>
 
     <VisualStateManager.VisualStateGroups>

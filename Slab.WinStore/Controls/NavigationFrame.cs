@@ -154,6 +154,7 @@ namespace Slab.WinStore.Controls
                 return;
             }
 
+            Log.Information("Retrieving the stored navigation routes");
             var routes = NavigationStackStorage.RetrieveRoutes();
 
             foreach (var route in routes)
